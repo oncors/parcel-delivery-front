@@ -8,7 +8,20 @@ import {configuration} from "../../config/config";
 
 function DeliveryMap(props) {
     const citiesMap = new Map([]);
-    const [parcels, setParcels] = useState([])
+    // const [parcels, setParcels] = useState([])
+
+    const parcels = [
+        {
+            city: "Szczecin",
+            parcels: [
+                {
+                    parcelId: "9042443e-fd68-476f-94d8-7d54ca14c8f3",
+                    status: "TO_DELIVERY",
+                    deliveryAddress: "Poznań"
+                }
+            ]
+        }
+    ]
 
     const statuses = new Map([
         [status.DELIVERY_DATE_EXPIRES, {color: "#e5a118", label: "date expires"}],
@@ -38,21 +51,23 @@ function DeliveryMap(props) {
         {x: 227, y: 488, name: "Zielona Góra"},
     ]
 
+    // function getParcels() {
+    //     console.log("get parcels")
+    //
+    //     fetch(configuration.API_GW_ADDRESS + "/parcel")
+    //         .then(res => res.json())
+    //         .then(json => {
+    //             console.log(json)
+    //             setParcels(json)
+    //         });
+    //
+    // }
+    // setInterval(getParcels, configuration.INTERVAL)
 
-    function getParcels() {
-        console.log("get parcels")
-
-        fetch(configuration.API_GW_ADDRESS + "/parcel")
-            .then(res => res.json())
-            .then(json => {
-                console.log(json)
-                setParcels(json)
-            });
-
-    }
-
-    setInterval(getParcels, configuration.INTERVAL)
-
+    /* FIXME: index.js:45 GET http://localhost:8084/parcel net::ERR_INSUFFICIENT_RESOURCES
+    *   za dużo requestów od zasobu/ albo parcele nie powinny być przeładowywane za każdym razem przez
+    *   Reac.createElement - póki co zahardcodowany json
+    * */
 
     return (
         <div

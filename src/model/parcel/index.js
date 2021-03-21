@@ -7,8 +7,6 @@ function Parcel(props) {
     const [style, setStyle] = useState("scale(0.35)")
     const [detailsCardStyle, setDetailsCardStyle] = useState("none")
 
-    console.log("PACG: " + props.packageId)
-
     return (
         <div>
             <div className="package"
