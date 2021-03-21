@@ -1,0 +1,18 @@
+.field {
+    position: absolute;
+    background-color: lightgray;
+    height: 8px;
+    width: 8px;
+    border-radius: 100px;
+}
+
+.cityName {
+    color: aliceblue;
+    top: -15px;
+    left: 10px;
+    font-size: 12px;
+
+    position: relative;
+    z-index: -1;
+}
+
